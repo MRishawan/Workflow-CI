@@ -1,8 +1,5 @@
 name: Automated ML Pipeline
 
-# ==========================================
-# Trigger (Sesuai blok "Push to 'main' branch" & "Manual Trigger")
-# ==========================================
 on:
   push:
     branches:
@@ -13,53 +10,36 @@ jobs:
   run-pipeline:
     name: Execute End-to-End ML Pipeline
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./MLproject
 
     steps:
-      # ==========================================
-      # 1. Checkout Repository
-      # ==========================================
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # ==========================================
-      # 2. Setup Python Environment
-      # ==========================================
       - name: Setup Python Environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.12.7'
           cache: 'pip'
 
-      # ==========================================
-      # 3. Install Dependencies
-      # ==========================================
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          # Memastikan library inti terinstal jika requirements.txt kosong/bermasalah
           pip install mlflow optuna xgboost scikit-learn pandas numpy
 
-      # ==========================================
-      # 4. Data Preprocessing
-      # ==========================================
       - name: Data Preprocessing
         run: python "preprocessing/automate_M Rishawan.py"
 
-      # ==========================================
-      # 5. Model Training & Evaluation
-      # ==========================================
       - name: Model Training & Evaluation
-        # Menggunakan MLflow Project untuk mengeksekusi modelling.py
         run: mlflow run . --env-manager=local --experiment-name="Housing_Price"
 
-      # ==========================================
-      # 6. Upload to GitHub (Pengganti "Upload to Google Drive")
-      # ==========================================
       - name: Upload to GitHub
         uses: actions/upload-artifact@v4
         with:
           name: Trained-Model-and-Metrics
-          # Mengunggah seluruh folder mlruns yang berisi model XGBoost dan log metrik
-          path: mlruns/
+          path: MLproject/mlruns/
           retention-days: 14
