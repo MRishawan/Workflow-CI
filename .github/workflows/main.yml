@@ -13,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./MLproject
+        working-directory: ./MLProject
 
     steps:
       - name: Checkout Repository
@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Trained-Model-and-Metrics
-          path: MLproject/mlruns/
+          path: MLProject/mlruns/
           retention-days: 14
