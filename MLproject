@@ -1,5 +1,0 @@
-name: California_Housing_Retraining
-
-entry_points:
-  main:
-    command: "python modelling.py"
