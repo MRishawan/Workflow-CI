@@ -36,15 +36,16 @@ def train_and_log_model():
     # ==========================================
     # 3. Memulai Sesi MLflow Run & Training
     # ==========================================
-    with mlflow.start_run(run_name="XGBoost_Baseline_No_Tuning"):
-        print("Memulai proses training XGBoost Baseline...")
+    with mlflow.start_run(run_name="XGBoost_Best_Params"): # Nama run disesuaikan agar lebih relevan
+        print("Memulai proses training XGBoost dengan Parameter Terbaik...")
         
-        # Inisialisasi model baseline XGBoost
-        # Menentukan beberapa parameter dasar agar tercatat di log
+        # Inisialisasi model XGBoost dengan parameter hasil tuning
         baseline_params = {
-            'n_estimators': 300,
-            'learning_rate': 0.05,
-            'max_depth': 6,
+            'n_estimators': 513,
+            'learning_rate': 0.04364402636257618,
+            'max_depth': 7,
+            'subsample': 0.9080447334706536,
+            'colsample_bytree': 0.8122285141973656,
             'random_state': 42,
             'n_jobs': -1
         }
