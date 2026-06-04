@@ -17,8 +17,8 @@ def train_and_log_model():
     # ==========================================
     print("Memuat dataset hasil preprocessing...")
     try:
-        train_df = pd.read_csv('housing_train_preprocessing.csv')
-        test_df = pd.read_csv('housing_test_preprocessing.csv')
+        train_df = pd.read_csv('data/housing_train_preprocessing.csv')
+        test_df = pd.read_csv('data/housing_test_preprocessing.csv')
     except FileNotFoundError:
         print("Error: File CSV tidak ditemukan. Pastikan letak file sudah benar.")
         return
