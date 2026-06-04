@@ -9,8 +9,8 @@ def train_and_log_model():
     # ==========================================
     # 1. Konfigurasi MLflow Tracking
     # ==========================================
-    mlflow.set_tracking_uri("file:./mlruns")
-    mlflow.set_experiment("Housing_Price")
+    #mlflow.set_tracking_uri("file:./mlruns")
+    #mlflow.set_experiment("Housing_Price")
 
     # ==========================================
     # 2. Memuat Dataset Preprocessed
