@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import os
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.cluster import KMeans # Tambahan import untuk K-Means
@@ -114,6 +115,8 @@ def save_processed_data(X_train, X_test, y_train, y_test, train_path='data/housi
     """
     Fungsi opsional untuk menyimpan data yang sudah diproses ke dalam format CSV.
     """
+    os.makedirs('data', exist_ok=True)
+    
     train_processed = X_train.copy()
     train_processed['median_house_value'] = y_train
     
