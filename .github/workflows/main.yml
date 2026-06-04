@@ -51,7 +51,7 @@ jobs:
       # ==========================================
       - name: Model Training & Evaluation
         # Menggunakan MLflow Project untuk mengeksekusi modelling.py
-        run: mlflow run . --env-manager=local
+        run: mlflow run . --env-manager=local --experiment-name="Housing_Price"
 
       # ==========================================
       # 6. Upload to GitHub (Pengganti "Upload to Google Drive")
